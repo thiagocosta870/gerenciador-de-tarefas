@@ -13,31 +13,51 @@ public class ModelTarefas {
     private int id;
     private String titulo;
     private String descricao;
+    private String status;
     
     //Construtor
-    public ModelTarefas (int id, String titulo, String descricao) {
+    public ModelTarefas (int id, String titulo, String descricao, String status) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
+        this.status = status;
     }
+    
+    public String toFileString() {
+        return id + ";" + titulo + ";" + descricao + ";" + status;
+    }
+    
+    
     // Getter
-    public int getid() {
+    public int getId(){
         return id;
     }
-    public String gettitulo () {
+    
+    public String getTitulo() {
         return titulo;
     }
-    public String getdescricao () {
+    
+    public String getDescricao () {
         return descricao;
     }
+    
+    public String getStatus () {
+        return status;
+    }
+    
     // Setters
-    public void setid (int id) {
+    public void setId (int id) {
         this.id = id;
     }
-    public void settitulo (String titulo) {
+    
+    public void setTitulo (String titulo) {
         this.titulo = titulo;
     }
-    public void setdescricao (String descricao) {
+    public void setDescricao (String descricao) {
         this.descricao = descricao;
     }
+    public void setStatus (String status) {
+        this.status = status;
+    }
+     
 }
