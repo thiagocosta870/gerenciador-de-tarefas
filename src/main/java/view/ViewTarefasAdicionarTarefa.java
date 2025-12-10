@@ -186,16 +186,19 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
       //NÃO FINALIZADO:
-        String titulo = caixaDeTextoTitulo.getText();
+       String titulo = caixaDeTextoTitulo.getText();
        String descricao = caixaDeTextoDescricaoDaTarefa.getText();
        String status = caixaDeTextoStatus.getText();
        
        ControllerTarefas controller = new ControllerTarefas();
        
-       boolean sucesso = controller.cadastrarTarefa (titulo, descricao, status);
+       boolean sucesso = controller.cadastrarTarefa(titulo, descricao, status);
        
-       if (sucesso) {
-        this.dispose();
+       if(sucesso){
+           javax.swing.JOptionPane.showMessageDialog(null, "Tarefa salva com sucesso. ");
+           this.dispose();
+       }else {
+           javax.swing.JOptionPane.showMessageDialog(null, "Erro ao salvar. Verifique se digitou o titulo e a descrição. ");
        }
         
     }//GEN-LAST:event_botaoSalvarActionPerformed

@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.util.List;
+import model.ModelTarefas;
+
 /**
  *
  * @author Thiag
@@ -16,9 +19,29 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
      * Creates new form ViewTarefasTelaInicial
      */
     public ViewTarefasTelaMenu() {
+        
         initComponents();
         
+        tabelaDeTarefas.getColumnModel().getColumn(1).setCellRenderer(new javax.swing.table.DefaultTableCellRenderer() {
+        @Override
+        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            
+            // 1. Cria a célula padrão (texto numa linha só)
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            
+            // 2. O Segredo: Define o texto do balãozinho igual ao texto da célula
+            if (value != null) {
+                setToolTipText(value.toString()); // Isto cria o popup amarelo
+            } else {
+                setToolTipText(null);
+            }
+            
+            return this;
+        }
+    });
     }
+     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +82,13 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         menuBar2.add(menu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(169, 198, 224));
 
@@ -107,7 +137,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         tabelaDeTarefas.setAutoCreateRowSorter(true);
         tabelaDeTarefas.setBackground(new java.awt.Color(169, 198, 224));
         tabelaDeTarefas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 112, 182)));
-        tabelaDeTarefas.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        tabelaDeTarefas.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         tabelaDeTarefas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -131,8 +161,16 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaDeTarefas.setToolTipText("");
+        tabelaDeTarefas.setAlignmentX(1.0F);
+        tabelaDeTarefas.setAlignmentY(1.0F);
+        tabelaDeTarefas.setDoubleBuffered(true);
         tabelaDeTarefas.setGridColor(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(tabelaDeTarefas);
+        tabelaDeTarefas.setPreferredSize(new java.awt.Dimension(400, 400));
+        tabelaDeTarefas.setRowHeight(50);
+        tabelaDeTarefas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabelaDeTarefas.setShowHorizontalLines(true);
+        tabelaDeTarefas.setShowVerticalLines(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,14 +178,14 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 914, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoApagarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
-            .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 1236, Short.MAX_VALUE)
+            .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,33 +194,29 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                 .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
+                        .addGap(207, 207, 207)
                         .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(botaoApagarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))))
+                        .addGap(33, 33, 33)
+                        .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -190,6 +224,9 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
 
     private void botaoAdicionarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarTarefaActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        
+   
     }//GEN-LAST:event_botaoAdicionarTarefaActionPerformed
 
     private void botaoEditarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarTarefaActionPerformed
@@ -200,12 +237,29 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoApagarTarefaActionPerformed
 
-    
-    private void preencherTabela(){
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        preencherTabela();
+    }//GEN-LAST:event_formWindowGainedFocus
+ private void preencherTabela(){
         controller.ControllerTarefas controller = new controller.ControllerTarefas();
+        List<ModelTarefas> listaTarefas = controller.listaTarefas();
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabelaDeTarefas.getModel();
         
-    }
+        modelo.setNumRows(0);
+        
+        for(model.ModelTarefas tarefa : listaTarefas){
+            modelo.addRow(new Object[]{
+                tarefa.getId(), 
+                tarefa.getTitulo(), 
+                tarefa.getDescricao(),
+                tarefa.getStatus(),
+            });
+            
+        }
+        }
+        
     
+
     /**
      * @param args the command line arguments
      */
