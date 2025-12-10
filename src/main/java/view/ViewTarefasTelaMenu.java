@@ -39,8 +39,27 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
             return this;
         }
     });
+    
+    
+        tabelaDeTarefas.getColumnModel().getColumn(2).setCellRenderer(new javax.swing.table.DefaultTableCellRenderer() {
+        @Override
+        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            
+            // 1. Cria a célula padrão (texto numa linha só)
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            
+            // 2. O Segredo: Define o texto do balãozinho igual ao texto da célula
+            if (value != null) {
+                setToolTipText(value.toString()); // Isto cria o popup amarelo
+            } else {
+                setToolTipText(null);
+            }
+            
+            return this;
+        }
+    });
+    
     }
-     
     
 
     /**
@@ -171,6 +190,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         tabelaDeTarefas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tabelaDeTarefas.setShowHorizontalLines(true);
         tabelaDeTarefas.setShowVerticalLines(true);
+        jScrollPane2.setViewportView(tabelaDeTarefas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,7 +214,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                 .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
+                        .addGap(193, 193, 193)
                         .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(botaoApagarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,8 +222,8 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                         .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 6, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(110, 110, 110))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,9 +234,10 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
