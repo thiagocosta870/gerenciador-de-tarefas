@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Thiag
  */
-public class GerenciadorDeTarefasDAO {
+public class ModelGerenciadorDeTarefasDAO {
     private static final String ARQUIVO_GERENCIADOR_DE_TAREFAS = "gerenciadorDeTarefas_db.txt";
     
     //Converter linha de texto em objeto:

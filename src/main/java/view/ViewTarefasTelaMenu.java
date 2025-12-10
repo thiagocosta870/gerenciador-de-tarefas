@@ -147,7 +147,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                     .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
-            .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 1228, Short.MAX_VALUE)
+            .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 1236, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,9 +181,8 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(531, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -201,6 +200,12 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoApagarTarefaActionPerformed
 
+    
+    private void preencherTabela(){
+        controller.ControllerTarefas controller = new controller.ControllerTarefas();
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -224,6 +229,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ViewTarefasTelaMenu().setVisible(true));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

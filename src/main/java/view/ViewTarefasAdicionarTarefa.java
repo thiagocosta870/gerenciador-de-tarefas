@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.ControllerTarefas;
+
 /**
  *
  * @author Thiag
@@ -31,12 +33,12 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelAdicionarTarefa = new javax.swing.JLabel();
         labelTitulo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        caixaDeTextoTitulo = new javax.swing.JTextField();
+        caixaDeTextoDescricaoDaTarefa = new javax.swing.JTextField();
         labelTitulo1 = new javax.swing.JLabel();
         labelTitulo2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        caixaDeTextoStatus = new javax.swing.JTextField();
+        botaoSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,25 +53,25 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         labelTitulo.setForeground(new java.awt.Color(0, 82, 236));
         labelTitulo.setText("Título");
 
-        jTextField1.setBackground(new java.awt.Color(169, 198, 224));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Digite aqui...");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        caixaDeTextoTitulo.setBackground(new java.awt.Color(169, 198, 224));
+        caixaDeTextoTitulo.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        caixaDeTextoTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        caixaDeTextoTitulo.setText("Digite aqui...");
+        caixaDeTextoTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
+        caixaDeTextoTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                caixaDeTextoTituloActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(169, 198, 224));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField2.setText("Digite aqui...");
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        caixaDeTextoDescricaoDaTarefa.setBackground(new java.awt.Color(169, 198, 224));
+        caixaDeTextoDescricaoDaTarefa.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        caixaDeTextoDescricaoDaTarefa.setForeground(new java.awt.Color(102, 102, 102));
+        caixaDeTextoDescricaoDaTarefa.setText("Digite aqui...");
+        caixaDeTextoDescricaoDaTarefa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
+        caixaDeTextoDescricaoDaTarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                caixaDeTextoDescricaoDaTarefaActionPerformed(evt);
             }
         });
 
@@ -81,25 +83,25 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         labelTitulo2.setForeground(new java.awt.Color(0, 82, 236));
         labelTitulo2.setText("Descrição da tarefa");
 
-        jTextField3.setBackground(new java.awt.Color(169, 198, 224));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField3.setText("Digite aqui...");
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        caixaDeTextoStatus.setBackground(new java.awt.Color(169, 198, 224));
+        caixaDeTextoStatus.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        caixaDeTextoStatus.setForeground(new java.awt.Color(102, 102, 102));
+        caixaDeTextoStatus.setText("Digite aqui...");
+        caixaDeTextoStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 82, 236), 2));
+        caixaDeTextoStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                caixaDeTextoStatusActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(169, 198, 224));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 255, 102));
-        jButton1.setText("SALVAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoSalvar.setBackground(new java.awt.Color(169, 198, 224));
+        botaoSalvar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        botaoSalvar.setForeground(new java.awt.Color(51, 255, 102));
+        botaoSalvar.setText("SALVAR");
+        botaoSalvar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoSalvarActionPerformed(evt);
             }
         });
 
@@ -113,9 +115,9 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(caixaDeTextoTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(caixaDeTextoDescricaoDaTarefa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(caixaDeTextoStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(528, 528, 528))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(labelTitulo2)
@@ -131,7 +133,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botaoSalvar)
                 .addGap(71, 71, 71))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,17 +144,17 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(labelTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(caixaDeTextoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelTitulo2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(caixaDeTextoDescricaoDaTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelTitulo1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(caixaDeTextoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(botaoSalvar)
                 .addGap(46, 46, 46))
         );
 
@@ -170,21 +172,32 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void caixaDeTextoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_caixaDeTextoTituloActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void caixaDeTextoDescricaoDaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoDescricaoDaTarefaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_caixaDeTextoDescricaoDaTarefaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void caixaDeTextoStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_caixaDeTextoStatusActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+       String titulo = caixaDeTextoTitulo.getText();
+       String descricao = caixaDeTextoDescricaoDaTarefa.getText();
+       String status = caixaDeTextoStatus.getText();
+       
+       ControllerTarefas controller = new ControllerTarefas();
+       
+       boolean sucesso = controller.cadastrarTarefa (titulo, descricao, status);
+       
+       if (sucesso) {
+        this.dispose();
+       }
+        
+    }//GEN-LAST:event_botaoSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,11 +225,11 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botaoSalvar;
+    private javax.swing.JTextField caixaDeTextoDescricaoDaTarefa;
+    private javax.swing.JTextField caixaDeTextoStatus;
+    private javax.swing.JTextField caixaDeTextoTitulo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel labelAdicionarTarefa;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelTitulo1;
