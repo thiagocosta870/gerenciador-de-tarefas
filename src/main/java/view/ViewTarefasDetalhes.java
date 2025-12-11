@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ControllerTarefas;
 import model.ModelTarefas;
 
 /**
@@ -13,6 +14,9 @@ import model.ModelTarefas;
 public class ViewTarefasDetalhes extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewTarefasDetalhes.class.getName());
+    
+    private int idTarefa;
+    
     private ModelTarefas tarefa;
 
     /**
@@ -24,10 +28,13 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
     public ViewTarefasDetalhes (ModelTarefas t){
         initComponents();
         this.tarefa = t;
+        this.idTarefa = t.getId();
         verDetalhes();
     }
     
     private void verDetalhes (){
+        
+        labelId.setText(String.valueOf(this.tarefa.getId()));
         caixaDeTextoTitulo.setText(this.tarefa.getTitulo());
         caixaDeTextoDescricao.setText(this.tarefa.getDescricao());
         caixaDeTextoStatus.setText(this.tarefa.getStatus());   
@@ -49,6 +56,7 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
         caixaDeTextoTitulo = new javax.swing.JTextField();
         caixaDeTextoStatus = new javax.swing.JTextField();
         botaoVoltar = new javax.swing.JButton();
+        labelId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +108,9 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
         botaoVoltar.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         botaoVoltar.setText("Voltar");
 
+        labelId.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelId.setText("-");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -117,13 +128,20 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
                 .addContainerGap(455, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoExcluir)
-                .addGap(516, 516, 516))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(botaoExcluir)
+                        .addGap(516, 516, 516))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(547, 547, 547))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(17, 17, 17)
+                .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoVoltar)
                     .addComponent(caixaDeTextoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -163,7 +181,24 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void botaoEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditar1ActionPerformed
-        // TODO add your handling code here:
+      int id = this.idTarefa;
+      String titulo =  caixaDeTextoTitulo.getText();
+      String descricao =  caixaDeTextoDescricao.getText();
+      String status = caixaDeTextoStatus.getText();
+      
+      ControllerTarefas controller = new ControllerTarefas();
+      boolean sucesso = controller.atualizarTarefa (id, titulo, descricao, status);
+      
+      if (sucesso) {
+          this.dispose();
+          
+          ViewTarefasTelaMenu telaMenu = new ViewTarefasTelaMenu (id);
+          telaMenu.setVisible(true);
+          javax.swing.JOptionPane.showMessageDialog (telaMenu, " Informações da sua tarefa atualizada com sucesso! ");
+      }  
+      else {
+          javax.swing.JOptionPane.showMessageDialog (this, " Erro ao atualizar a tarefa!! ");
+      }   
     }//GEN-LAST:event_botaoEditar1ActionPerformed
 
     private void caixaDeTextoDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoDescricaoActionPerformed
@@ -211,5 +246,6 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
     private javax.swing.JTextField caixaDeTextoStatus;
     private javax.swing.JTextField caixaDeTextoTitulo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelId;
     // End of variables declaration//GEN-END:variables
 }

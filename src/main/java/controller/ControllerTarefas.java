@@ -36,6 +36,27 @@ public class ControllerTarefas {
         return dao.listarTodas();
     }
     
+    public ModelTarefas buscarTarefaPorId (int id){
+        List <ModelTarefas> tarefas = dao.listarTodas();
+        
+        for (ModelTarefas tarefa : tarefas) {
+            if (tarefa.getId() == id){
+                return tarefa;
+            }
+        }
+        return null;
+    }
+    
+    public boolean atualizarTarefa (int id, String titulo, String descricao, String status){
+        ModelTarefas tarefaAtualizada = new ModelTarefas (id, titulo, descricao, status );
+        
+        return dao.atualizar(tarefaAtualizada);
+    }
     
     
-}
+    
+    public boolean deletarTarefa(int id){
+        return dao.deletar(id);
+    }
+
+    }

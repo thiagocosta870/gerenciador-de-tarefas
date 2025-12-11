@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -69,6 +70,60 @@ public class ModelGerenciadorDeTarefasDAO {
         } catch (IOException e) {
             System.err.println("Erro ao salvar tarefa no arquivo: " + e.getMessage());
         }
+        }
+        
+        public boolean atualizar (ModelTarefas tarefaAtualizada){
+            List<ModelTarefas> tarefas = listarTodas();
+            boolean encontrada = false;
+            
+            for (int i=0; i<tarefas.size(); i++){
+                ModelTarefas tarefaExistente = tarefas.get(i);
+                if (tarefaExistente.getId() == (tarefaAtualizada.getId())) {
+                    
+                    tarefaExistente.setTitulo(tarefaAtualizada.getTitulo()); 
+                    tarefaExistente.setDescricao(tarefaAtualizada.getDescricao());
+                    tarefaExistente.setStatus(tarefaAtualizada.getStatus());
+                    
+                    encontrada = true;
+                    break;
+                }
+            }
+            
+            if (encontrada) {
+                reescreverArquivo (tarefas);
+                return true;
+            }
+            System.err.println(">>>> ATUALIZAR FALHOU: Tarefa com ID " + tarefaAtualizada.getId() + " não encontrada."); // <--- ADICIONE ESTA LINHA!
+            return false;
+               
+        }
+        
+        public boolean deletar (int id) {
+            List<ModelTarefas> tarefas = listarTodas();
+            
+            List<ModelTarefas> tarefasRestantes = tarefas.stream()
+                    .filter(c -> !(c.getId() == id))
+                    .collect(Collectors.toList());
+                    
+            if (tarefasRestantes.size() < tarefas.size()){
+                reescreverArquivo (tarefasRestantes);
+                return true;
+            }
+            return false;
+        } 
+        
+        private void reescreverArquivo(List<ModelTarefas> tarefas){
+            try (BufferedWriter writer = new BufferedWriter (new FileWriter (ARQUIVO_GERENCIADOR_DE_TAREFAS, false))){
+                
+                for (ModelTarefas tarefa : tarefas){
+                    writer.write (tarefa.toFileString());
+                    writer.newLine();
+                    
+                    
+                }
+            } catch (IOException e) {
+                System.err.println("Erro ao reescrever arquivo: " + e.getMessage());
+            }
         }
      
      
