@@ -40,6 +40,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         labelTitulo2 = new javax.swing.JLabel();
         caixaDeTextoStatus = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
+        botaoVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +107,15 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
             }
         });
 
+        botaoVoltar.setBackground(new java.awt.Color(255, 255, 102));
+        botaoVoltar.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,11 +146,17 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(botaoSalvar)
                 .addGap(71, 71, 71))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(botaoVoltar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(22, 22, 22)
+                .addComponent(botaoVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelAdicionarTarefa)
                 .addGap(56, 56, 56)
                 .addComponent(labelTitulo)
@@ -204,6 +220,14 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+
+        this.dispose();
+        ViewTarefasTelaMenu menu = new ViewTarefasTelaMenu();
+        menu.setVisible(true);
+
+    }//GEN-LAST:event_botaoVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +255,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoSalvar;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JTextField caixaDeTextoDescricaoDaTarefa;
     private javax.swing.JTextField caixaDeTextoStatus;
     private javax.swing.JTextField caixaDeTextoTitulo;

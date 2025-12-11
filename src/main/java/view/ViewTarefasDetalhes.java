@@ -107,8 +107,14 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
         botaoVoltar.setBackground(new java.awt.Color(255, 255, 102));
         botaoVoltar.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
         botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
 
         labelId.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelId.setText("-");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,7 +140,7 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
                         .addGap(516, 516, 516))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(547, 547, 547))))
+                        .addGap(540, 540, 540))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +183,33 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        // TODO add your handling code here:
+int confirmar = javax.swing.JOptionPane.showConfirmDialog(this,
+        "Tem certeza que deseja deletar permanentemente a sua tarefa?? ", " Confirmação ",
+        javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if ( confirmar == javax.swing.JOptionPane.YES_NO_OPTION){
+        
+        ControllerTarefas controller = new ControllerTarefas();
+        boolean sucesso = controller.deletarTarefa(this.idTarefa);
+        
+            if (sucesso){
+                this.dispose();
+                
+                ViewTarefasTelaMenu menu = new ViewTarefasTelaMenu();
+                menu.setVisible(true);
+                javax.swing.JOptionPane.showMessageDialog(menu, " Tarefa deletada com sucesso. ");
+            
+            
+            } else {
+                javax.swing.JOptionPane.showMessageDialog (this, " Erro ao deletar a tarefa. ");
+            }}
+              
+            
+            
+            else if (confirmar == javax.swing.JOptionPane.NO_OPTION) {
+                javax.swing.JOptionPane.showMessageDialog(this, " A tarefa não foi deletada!! ");
+                }
+        
     }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void botaoEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditar1ActionPerformed
@@ -190,15 +222,16 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
       boolean sucesso = controller.atualizarTarefa (id, titulo, descricao, status);
       
       if (sucesso) {
-          this.dispose();
           
-          ViewTarefasTelaMenu telaMenu = new ViewTarefasTelaMenu (id);
+          ViewTarefasTelaMenu telaMenu = new ViewTarefasTelaMenu ();
           telaMenu.setVisible(true);
-          javax.swing.JOptionPane.showMessageDialog (telaMenu, " Informações da sua tarefa atualizada com sucesso! ");
+          javax.swing.JOptionPane.showMessageDialog (this, " Informações da sua tarefa atualizada com sucesso! ");
       }  
       else {
           javax.swing.JOptionPane.showMessageDialog (this, " Erro ao atualizar a tarefa!! ");
-      }   
+      }
+      
+      
     }//GEN-LAST:event_botaoEditar1ActionPerformed
 
     private void caixaDeTextoDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoDescricaoActionPerformed
@@ -212,6 +245,14 @@ public class ViewTarefasDetalhes extends javax.swing.JFrame {
     private void caixaDeTextoStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDeTextoStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_caixaDeTextoStatusActionPerformed
+
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        
+        this.dispose();
+        ViewTarefasTelaMenu menu = new ViewTarefasTelaMenu();
+        menu.setVisible(true);
+        
+    }//GEN-LAST:event_botaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments

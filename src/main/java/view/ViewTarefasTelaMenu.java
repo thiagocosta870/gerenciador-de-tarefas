@@ -122,8 +122,6 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelGerenciadorDeTarefas = new java.awt.Label();
         botaoAdicionarTarefa = new javax.swing.JButton();
-        botaoEditarTarefa = new javax.swing.JButton();
-        botaoApagarTarefa = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaDeTarefas = new javax.swing.JTable();
 
@@ -170,33 +168,9 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
             }
         });
 
-        botaoEditarTarefa.setBackground(new java.awt.Color(169, 198, 224));
-        botaoEditarTarefa.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        botaoEditarTarefa.setForeground(new java.awt.Color(0, 82, 236));
-        botaoEditarTarefa.setText("Editar tarefa");
-        botaoEditarTarefa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botaoEditarTarefa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botaoEditarTarefa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoEditarTarefaActionPerformed(evt);
-            }
-        });
-
-        botaoApagarTarefa.setBackground(new java.awt.Color(169, 198, 224));
-        botaoApagarTarefa.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        botaoApagarTarefa.setForeground(new java.awt.Color(0, 82, 236));
-        botaoApagarTarefa.setText("Apagar tarefa");
-        botaoApagarTarefa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botaoApagarTarefa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botaoApagarTarefa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoApagarTarefaActionPerformed(evt);
-            }
-        });
-
         tabelaDeTarefas.setAutoCreateRowSorter(true);
         tabelaDeTarefas.setBackground(new java.awt.Color(169, 198, 224));
-        tabelaDeTarefas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 112, 182)));
+        tabelaDeTarefas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabelaDeTarefas.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         tabelaDeTarefas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,34 +211,24 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 914, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoApagarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
             .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(labelGerenciadorDeTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(botaoEditarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(botaoApagarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(110, 110, 110))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -285,19 +249,11 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAdicionarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarTarefaActionPerformed
-        // TODO add your handling code here:
         this.dispose();
-        
+        ViewTarefasAdicionarTarefa adicionar = new ViewTarefasAdicionarTarefa();
+        adicionar.setVisible(true);
    
     }//GEN-LAST:event_botaoAdicionarTarefaActionPerformed
-
-    private void botaoEditarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarTarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoEditarTarefaActionPerformed
-
-    private void botaoApagarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoApagarTarefaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoApagarTarefaActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         preencherTabela();
@@ -358,8 +314,6 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAdicionarTarefa;
-    private javax.swing.JButton botaoApagarTarefa;
-    private javax.swing.JButton botaoEditarTarefa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label labelGerenciadorDeTarefas;
