@@ -22,6 +22,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
     public ViewTarefasTelaMenu() {
         initComponents();
         preencherTabela();
+        final ViewTarefasTelaMenu janelaPrincipal = this;
         
         tabelaDeTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
     @Override
@@ -40,14 +41,22 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
     // 2. DEPOIS: Criar a tarefa passando os 4 dados OBRIGATÓRIOS
     // Repara que agora os dados vão dentro dos parênteses ( )
     model.ModelTarefas tarefaSelecionada = new model.ModelTarefas(id, titulo, descricao, status);
+    
 
     // 3. Abrir a nova janela
+    janelaPrincipal.dispose();
     ViewTarefasDetalhes tela = new ViewTarefasDetalhes(tarefaSelecionada);
+    
     tela.setVisible(true);
-}
+    
+       }
+            
+            
         }
+        
     }
 });
+        
         
         
         tabelaDeTarefas.getColumnModel().getColumn(1).setCellRenderer(new javax.swing.table.DefaultTableCellRenderer() {
@@ -288,9 +297,11 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         preencherTabela();
+        
     }//GEN-LAST:event_formWindowGainedFocus
  private void preencherTabela(){
 // 1. Chama o controller
+
     controller.ControllerTarefas controller = new controller.ControllerTarefas();
     
     // 2. BUSCA A LISTA NO BANCO (Esta é a linha que estava faltando!)
