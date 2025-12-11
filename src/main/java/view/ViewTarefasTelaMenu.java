@@ -7,6 +7,7 @@ package view;
 import java.util.List;
 import model.ModelTarefas;
 
+
 /**
  *
  * @author Thiag
@@ -19,8 +20,35 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
      * Creates new form ViewTarefasTelaInicial
      */
     public ViewTarefasTelaMenu() {
-        
         initComponents();
+        preencherTabela();
+        
+        tabelaDeTarefas.addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        if (evt.getClickCount() == 2) { // Duplo clique
+            
+            int linha = tabelaDeTarefas.getSelectedRow();
+            if (linha != -1) {
+
+    // 1. PRIMEIRO: Pegar os dados da tabela (Movemos isto para cima)
+    int id = Integer.parseInt(tabelaDeTarefas.getValueAt(linha, 0).toString());
+    String titulo = tabelaDeTarefas.getValueAt(linha, 1).toString();
+    String descricao = tabelaDeTarefas.getValueAt(linha, 2).toString();
+    String status = tabelaDeTarefas.getValueAt(linha, 3).toString();
+
+    // 2. DEPOIS: Criar a tarefa passando os 4 dados OBRIGATÓRIOS
+    // Repara que agora os dados vão dentro dos parênteses ( )
+    model.ModelTarefas tarefaSelecionada = new model.ModelTarefas(id, titulo, descricao, status);
+
+    // 3. Abrir a nova janela
+    ViewTarefasDetalhes tela = new ViewTarefasDetalhes(tarefaSelecionada);
+    tela.setVisible(true);
+}
+        }
+    }
+});
+        
         
         tabelaDeTarefas.getColumnModel().getColumn(1).setCellRenderer(new javax.swing.table.DefaultTableCellRenderer() {
         @Override
@@ -262,24 +290,30 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         preencherTabela();
     }//GEN-LAST:event_formWindowGainedFocus
  private void preencherTabela(){
-        controller.ControllerTarefas controller = new controller.ControllerTarefas();
-        List<ModelTarefas> listaTarefas = controller.listaTarefas();
-        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabelaDeTarefas.getModel();
-        
-        modelo.setNumRows(0);
-        
-        for(model.ModelTarefas tarefa : listaTarefas){
-            modelo.addRow(new Object[]{
-                tarefa.getId(), 
-                tarefa.getTitulo(), 
-                tarefa.getDescricao(),
-                tarefa.getStatus(),
-            });
-            
-        }
-        }
-        
+// 1. Chama o controller
+    controller.ControllerTarefas controller = new controller.ControllerTarefas();
     
+    // 2. BUSCA A LISTA NO BANCO (Esta é a linha que estava faltando!)
+    java.util.List<model.ModelTarefas> listaTarefas = controller.listaTarefas();
+    
+    // 3. Prepara a tabela para receber dados
+    javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabelaDeTarefas.getModel();
+    modelo.setNumRows(0); // Limpa a tabela antes de encher
+    
+    // 4. Teste do Detetive (opcional, para ver no Output)
+    System.out.println("Encontrei " + listaTarefas.size() + " tarefas.");
+
+    // 5. Adiciona cada tarefa nas linhas da tabela
+    for (model.ModelTarefas tarefa : listaTarefas) {
+        modelo.addRow(new Object[]{
+            tarefa.getId(),
+            tarefa.getTitulo(),
+            tarefa.getDescricao(),
+            tarefa.getStatus()
+        });
+    }
+}        
+   
 
     /**
      * @param args the command line arguments

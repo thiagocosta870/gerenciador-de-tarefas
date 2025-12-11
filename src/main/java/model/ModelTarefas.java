@@ -4,10 +4,13 @@
  */
 package model;
 
+import view.ViewTarefasDetalhes;
+
 /**
  *
  * @author Thiag
  */
+
 public class ModelTarefas {
     // Atributos 
     private int id;
@@ -21,6 +24,10 @@ public class ModelTarefas {
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
+    }
+
+    public ModelTarefas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public String toFileString() {

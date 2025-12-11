@@ -19,6 +19,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
      */
     public ViewTarefasAdicionarTarefa() {
         initComponents();
+        
     }
 
     /**
@@ -185,7 +186,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
     }//GEN-LAST:event_caixaDeTextoStatusActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-      //NÃO FINALIZADO:
+      //NÃO FINALIZADO
        String titulo = caixaDeTextoTitulo.getText();
        String descricao = caixaDeTextoDescricaoDaTarefa.getText();
        String status = caixaDeTextoStatus.getText();
