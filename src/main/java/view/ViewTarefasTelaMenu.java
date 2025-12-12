@@ -148,17 +148,17 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(169, 198, 224));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
         labelGerenciadorDeTarefas.setAlignment(java.awt.Label.CENTER);
         labelGerenciadorDeTarefas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        labelGerenciadorDeTarefas.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 36)); // NOI18N
-        labelGerenciadorDeTarefas.setForeground(new java.awt.Color(0, 82, 236));
+        labelGerenciadorDeTarefas.setFont(new java.awt.Font("Bookman Old Style", 1, 36)); // NOI18N
+        labelGerenciadorDeTarefas.setForeground(new java.awt.Color(255, 255, 255));
         labelGerenciadorDeTarefas.setText("Bem vindo ao seu gerenciador de tarefas, usuário");
 
-        botaoAdicionarTarefa.setBackground(new java.awt.Color(169, 198, 224));
+        botaoAdicionarTarefa.setBackground(new java.awt.Color(0, 0, 102));
         botaoAdicionarTarefa.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
-        botaoAdicionarTarefa.setForeground(new java.awt.Color(0, 82, 236));
+        botaoAdicionarTarefa.setForeground(new java.awt.Color(255, 255, 255));
         botaoAdicionarTarefa.setText("Adicionar tarefa");
         botaoAdicionarTarefa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botaoAdicionarTarefa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -169,7 +169,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         });
 
         tabelaDeTarefas.setAutoCreateRowSorter(true);
-        tabelaDeTarefas.setBackground(new java.awt.Color(169, 198, 224));
+        tabelaDeTarefas.setBackground(new java.awt.Color(255, 204, 0));
         tabelaDeTarefas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabelaDeTarefas.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         tabelaDeTarefas.setModel(new javax.swing.table.DefaultTableModel(

@@ -10,4 +10,12 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.mycompany.gerenciadordetarefas.GerenciadorDeTarefas</exec.mainClass>
     </properties>
+    <name>ProjetoGerenciadorDeTarefas</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE280</version>
+        </dependency>
+    </dependencies>
 </project>
