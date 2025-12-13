@@ -1090,14 +1090,14 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(118, 118, 118))
+                .addContainerGap())
         );
 
         pack();
@@ -1116,7 +1116,7 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
     }//GEN-LAST:event_caixaDeTextoStatusActionPerformed
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
-      //NÃO FINALIZADO
+     
        String titulo = caixaDeTextoTitulo.getText();
        String descricao = caixaDeTextoDescricaoDaTarefa.getText();
        String status = caixaDeTextoStatus.getText();
@@ -1128,6 +1128,8 @@ public class ViewTarefasAdicionarTarefa extends javax.swing.JFrame {
        if(sucesso){
            javax.swing.JOptionPane.showMessageDialog(null, "Tarefa salva com sucesso. ");
            this.dispose();
+           ViewTarefasTelaMenu menu = new ViewTarefasTelaMenu();
+           menu.setVisible(true);
        }else {
            javax.swing.JOptionPane.showMessageDialog(null, "Erro ao salvar. Verifique se digitou o titulo e a descrição. ");
        }

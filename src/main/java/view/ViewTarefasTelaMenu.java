@@ -154,7 +154,7 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
         labelGerenciadorDeTarefas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         labelGerenciadorDeTarefas.setFont(new java.awt.Font("Bookman Old Style", 1, 36)); // NOI18N
         labelGerenciadorDeTarefas.setForeground(new java.awt.Color(255, 255, 255));
-        labelGerenciadorDeTarefas.setText("Bem vindo ao seu gerenciador de tarefas, usuário");
+        labelGerenciadorDeTarefas.setText("Bem vindo ao seu gerenciador de tarefas");
 
         botaoAdicionarTarefa.setBackground(new java.awt.Color(0, 0, 102));
         botaoAdicionarTarefa.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
@@ -230,6 +230,8 @@ public class ViewTarefasTelaMenu extends javax.swing.JFrame {
                 .addComponent(botaoAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
+
+        labelGerenciadorDeTarefas.getAccessibleContext().setAccessibleName("Bem vindo ao seu gerenciador de tarefas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
